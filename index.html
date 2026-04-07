@@ -1,1 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Giuseppe Carlotta – Auteur-Compositeur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Auteur-compositeur indépendant. Chansons originales, pop et électro, pour artistes, performeurs et projets musicaux.">
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-alt: #0b0d14;
+      --accent: #f5c14b;
+      --accent-soft: #f5c14b22;
+      --text: #f7f7f7;
+      --muted: #a5a7b5;
+      --card: #111320;
+      --border: #1f2233;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #15182a 0, #05060a 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      padding: 32px 0 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    h1 {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      font-weight: 650;
+    }
+    .subtitle {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.18s ease;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f5c14b, #ff8f3c);
+      color: #1b1307;
+      font-weight: 600;
+      box-shadow: 0 10px 30px #00000066;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px #00000088;
+    }
+    .btn-ghost {
+      border-color: var(--border);
+      color: var(--muted);
+      background: #05060a;
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-top: 32px;
+    }
+
+    section {
+      border-radius: 18px;
+      background: linear-gradient(145deg, #090b13, #05060a);
+      border: 1px solid var(--border);
+      padding: 22px 20px 20px;
+    }
+    section h2 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    section p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .tracks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .track {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--card);
+      border: 1px solid #1a1d2a;
+    }
+    .track-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .track-title {
+      font-size: 0.98rem;
+      font-weight: 550;
+    }
+    .track-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .track-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .track-link {
+      font-size: 0.86rem;
+    }
+
+    .list {
+      margin-top: 8px;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+    .list li {
+      margin-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+    .contact-label {
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Auteur-compositeur indépendant
+      </div>
+      <h1>Giuseppe Carlotta – Créateur de chansons originales</h1>
+      <p class="subtitle">
+        J’écris et compose des titres modernes, entre pop et électro, pensés pour la scène,
+        l’émotion et l’interprétation. Chaque chanson est un univers.
+      </p>
+      <div class="hero-actions">
+        <a href="#compositions" class="btn btn-primary">🎧 Écouter mes compositions</a>
+        <a href="#contact" class="btn btn-ghost">Parler d’un projet</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="presentation">
+        <h2>À propos</h2>
+        <p>
+          Je suis auteur-compositeur, belge basé en Espagne. Je crée des chansons originales pour
+          artistes, performeurs et projets musicaux. Mon écriture explore la pop moderne, l’électro
+          émotionnelle et les récits intimes, avec une attention particulière portée au rythme, au
+          texte et à la scène. Chaque titre est pensé pour mettre en valeur une voix, une identité
+          et une présence artistique.
+        </p>
+      </section>
+
+      <section id="compositions">
+        <div class="grid-2">
+          <div>
+            <h2>Compositions sélectionnées</h2>
+            <p>Quelques titres représentatifs de mon univers et de mon écriture.</p>
+
+            <div class="tracks-list">
+              <div class="track">
+                <div class="track-header">
+                  <div class="track-title">Libre sous les lumières</div>
+                  <div class="track-tag">Pop / Scène</div>
+                </div>
+                <div class="track-desc">
+                  Chanson pop lumineuse, rythmée, pensée pour la scène, la danse et l’énergie live.
+                </div>
+                <div class="track-link">
+                  ▶️ <a href="https://youtube.com" target="_blank" rel="noopener">Écouter sur YouTube</a>
+                </div>
+              </div>
+
+              <div class="track">
+                <div class="track-header">
+                  <div class="track-title">Pulsion magique</div>
+                  <div class="track-tag">Électro / Hypnotique</div>
+                </div>
+                <div class="track-desc">
+                  Univers électro sombre et futuriste, tension progressive, texte autour du vertige
+                  intérieur et de la transe.
+                </div>
+                <div class="track-link">
+                  ▶️ <a href="https://youtube.com" target="_blank" rel="noopener">Écouter sur YouTube</a>
+                </div>
+              </div>
+
+              <div class="track">
+                <div class="track-header">
+                  <div class="track-title">Romance toxique</div>
+                  <div class="track-tag">Pop électro / Emotion</div>
+                </div>
+                <div class="track-desc">
+                  Récit d’une relation toxique et d’une reconstruction, voix féminine, ambiance
+                  nocturne et émotionnelle.
+                </div>
+                <div class="track-link">
+                  ▶️ <a href="https://youtube.com" target="_blank" rel="noopener">Écouter sur YouTube</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2>Ce que je propose</h2>
+            <p>
+              Je travaille sur des chansons complètes ou des projets sur mesure, en fonction des
+              besoins artistiques.
+            </p>
+            <ul class="list">
+              <li>Chansons originales (musique + paroles)</li>
+              <li>Textes sur mesure pour voix féminine, masculine ou drag / performance</li>
+              <li>Mélodies adaptées à un univers précis (pop, électro, ballade…)</li>
+              <li>Développement d’un titre autour d’un thème ou d’un concept</li>
+              <li>Pré‑maquettes avec voix IA pour visualiser le morceau</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="droits">
+        <h2>Protection & droits d’auteur</h2>
+        <p>
+          Toutes mes œuvres sont protégées auprès de ma société d’auteurs. Chaque création est
+          datée, déclarée et traçable. Les collaborations se font dans le respect des droits
+          d’auteur et des exploitations possibles (interprétation, enregistrement, diffusion…).
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact & collaborations</h2>
+        <p>
+          Pour écouter un titre complet, discuter d’un projet ou envisager une collaboration,
+          vous pouvez me contacter directement.
+        </p>
+        <div class="contact-block">
+          <div>
+            <div class="contact-label">Email</div>
+            <div><a href="mailto:ton.email@exemple.com">ton.email@exemple.com</a></div>
+          </div>
+          <div>
+            <div class="contact-label">Réseaux</div>
+            <div>
+              Instagram / Messenger / Autre : <span>@tonpseudo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Giuseppe Carlotta – Auteur-compositeur</div>
+      <div>Page de présentation – usage professionnel uniquement</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
